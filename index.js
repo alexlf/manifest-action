@@ -27,7 +27,8 @@ const directoryList = getDirectories(workSpace);
 directoryList.forEach(dir => {
     const workingDirectory = `${workSpace}/${dir}`;
     /* Copy readme file into the manifest.json */
-    const manifestInfo = readFile(`${workSpace}/${dir}/readme.txt`);     
+    if(!existsSync(`${workingDirectory}/readme.txt`)) continue;
+    const manifestInfo = readFile(`${workingDirectory}/readme.txt`);     
     writeFileSync(`${workSpace}/${dir}/manifest.json`,manifestInfo);
     const appManifest = JSON.parse(readFile(`${workingDirectory}/manifest.json`));
     const filesInDir = getJSONFilesInDir(`${workSpace}/${dir}`);
