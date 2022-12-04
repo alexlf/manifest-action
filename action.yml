@@ -1,0 +1,5 @@
+name: 'Generate Manifest'
+description: 'Generate manifest.json files'
+runs:
+  using: 'node16'
+  main: 'index.js'
